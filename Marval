@@ -1,0 +1,14 @@
+*** Variables ***
+@{hero}    ironman    batman    captain    superman    hulk    shazam    thor    flash    blackwidow    wonder woman    hawkeye
+
+*** Test Cases ***
+TC_01 - Marval hero
+    ${i}        Set Variable   0
+    FOR         ${univesre}     IN          @{hero}
+                ${number}       Evaluate    ${i}%2
+        IF      ${number}==0
+        Log To Console          ${univesre}
+        END
+                ${i}            Evaluate    ${i}+1
+        Exit For Loop If        "${univesre}"== "blackwidow"
+    END
